@@ -1,5 +1,6 @@
 import './App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { getCompanyProfile } from './companyProfiles';
 
 function App() {
   const [formData, setFormData] = useState({
@@ -7,6 +8,23 @@ function App() {
     email: '',
     message: ''
   });
+  
+  const [companyProfile, setCompanyProfile] = useState(null);
+
+  // Get company parameter from URL and load profile
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const company = params.get('company');
+    const profile = getCompanyProfile(company);
+    setCompanyProfile(profile);
+    
+    // Apply dynamic theme colors
+    if (profile && profile.theme) {
+      document.documentElement.style.setProperty('--primary-color', profile.theme.primary);
+      document.documentElement.style.setProperty('--secondary-color', profile.theme.secondary);
+      document.documentElement.style.setProperty('--hero-gradient', profile.theme.gradient);
+    }
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,8 +39,28 @@ function App() {
     });
   };
 
+  // Show loading state until profile is loaded
+  if (!companyProfile) {
+    return <div className="loading">Loading...</div>;
+  }
+
+  // Check if skill should be emphasized
+  const isEmphasized = (skillName) => {
+    if (!companyProfile.skillsEmphasis) return false;
+    return companyProfile.skillsEmphasis.includes(skillName);
+  };
+
   return (
     <div className="App">
+      {/* Company-specific banner */}
+      {companyProfile.name !== 'Default' && (
+        <div className="company-banner">
+          <div className="container">
+            <span>👋 Customized for {companyProfile.name}</span>
+          </div>
+        </div>
+      )}
+
       {/* Navigation */}
       <nav className="navbar">
         <div className="container">
@@ -44,11 +82,20 @@ function App() {
             <h1 className="hero-title">Jiteshwar Nishad</h1>
             <p className="hero-subtitle">Front End Developer</p>
             <p className="hero-description">
-              Hi, I'm Jitesh. I'm a Tech Savvy living in Bangalore, India. 
-              I have 5+ years of experience in web and mobile based applications. 
-              I'm currently employed at Apttus where I develop HTML, CSS and JavaScript 
-              for consumer facing applications.
+              {companyProfile.headline}
             </p>
+            
+            {/* Show company-specific highlights */}
+            {companyProfile.highlights && (
+              <div className="hero-highlights">
+                {companyProfile.highlights.map((highlight, index) => (
+                  <div key={index} className="highlight-item">
+                    ✓ {highlight}
+                  </div>
+                ))}
+              </div>
+            )}
+            
             <div className="hero-buttons">
               <a href="#contact" className="btn btn-primary">Get In Touch</a>
               <a href="#experience" className="btn btn-secondary">View Work</a>
@@ -89,45 +136,45 @@ function App() {
           <div className="skills-grid">
             <div className="skills-category">
               <h3>Coding Skills</h3>
-              <div className="skill">
+              <div className={`skill ${isEmphasized('HTML5') ? 'emphasized' : ''}`}>
                 <div className="skill-info">
-                  <span>HTML5</span>
+                  <span>HTML5 {isEmphasized('HTML5') && '⭐'}</span>
                   <span>80%</span>
                 </div>
                 <div className="skill-bar">
                   <div className="skill-progress" style={{width: '80%'}}></div>
                 </div>
               </div>
-              <div className="skill">
+              <div className={`skill ${isEmphasized('CSS3') ? 'emphasized' : ''}`}>
                 <div className="skill-info">
-                  <span>CSS3</span>
+                  <span>CSS3 {isEmphasized('CSS3') && '⭐'}</span>
                   <span>70%</span>
                 </div>
                 <div className="skill-bar">
                   <div className="skill-progress" style={{width: '70%'}}></div>
                 </div>
               </div>
-              <div className="skill">
+              <div className={`skill ${isEmphasized('JavaScript') ? 'emphasized' : ''}`}>
                 <div className="skill-info">
-                  <span>JavaScript</span>
+                  <span>JavaScript {isEmphasized('JavaScript') && '⭐'}</span>
                   <span>80%</span>
                 </div>
                 <div className="skill-bar">
                   <div className="skill-progress" style={{width: '80%'}}></div>
                 </div>
               </div>
-              <div className="skill">
+              <div className={`skill ${isEmphasized('Angular JS 1.x') ? 'emphasized' : ''}`}>
                 <div className="skill-info">
-                  <span>Angular JS 1.x</span>
+                  <span>Angular JS 1.x {isEmphasized('Angular JS 1.x') && '⭐'}</span>
                   <span>85%</span>
                 </div>
                 <div className="skill-bar">
                   <div className="skill-progress" style={{width: '85%'}}></div>
                 </div>
               </div>
-              <div className="skill">
+              <div className={`skill ${isEmphasized('Angular JS 6') ? 'emphasized' : ''}`}>
                 <div className="skill-info">
-                  <span>Angular JS 6</span>
+                  <span>Angular JS 6 {isEmphasized('Angular JS 6') && '⭐'}</span>
                   <span>60%</span>
                 </div>
                 <div className="skill-bar">
@@ -137,36 +184,36 @@ function App() {
             </div>
             <div className="skills-category">
               <h3>Tools</h3>
-              <div className="skill">
+              <div className={`skill ${isEmphasized('SVN') ? 'emphasized' : ''}`}>
                 <div className="skill-info">
-                  <span>SVN</span>
+                  <span>SVN {isEmphasized('SVN') && '⭐'}</span>
                   <span>70%</span>
                 </div>
                 <div className="skill-bar">
                   <div className="skill-progress" style={{width: '70%'}}></div>
                 </div>
               </div>
-              <div className="skill">
+              <div className={`skill ${isEmphasized('Sublime') ? 'emphasized' : ''}`}>
                 <div className="skill-info">
-                  <span>Sublime</span>
+                  <span>Sublime {isEmphasized('Sublime') && '⭐'}</span>
                   <span>80%</span>
                 </div>
                 <div className="skill-bar">
                   <div className="skill-progress" style={{width: '80%'}}></div>
                 </div>
               </div>
-              <div className="skill">
+              <div className={`skill ${isEmphasized('ALM') ? 'emphasized' : ''}`}>
                 <div className="skill-info">
-                  <span>ALM</span>
+                  <span>ALM {isEmphasized('ALM') && '⭐'}</span>
                   <span>75%</span>
                 </div>
                 <div className="skill-bar">
                   <div className="skill-progress" style={{width: '75%'}}></div>
                 </div>
               </div>
-              <div className="skill">
+              <div className={`skill ${isEmphasized('JIRA') ? 'emphasized' : ''}`}>
                 <div className="skill-info">
-                  <span>JIRA</span>
+                  <span>JIRA {isEmphasized('JIRA') && '⭐'}</span>
                   <span>75%</span>
                 </div>
                 <div className="skill-bar">
