@@ -2,14 +2,14 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { getCompanyProfile } from "./companyProfiles";
 import ChatBot from "./ChatBot";
-import { 
-  TypeWriter, 
-  ParticleBackground, 
-  TiltCard, 
+import {
+  TypeWriter,
+  ParticleBackground,
+  TiltCard,
   DarkModeToggle,
   GradientText,
   GlowButton,
-  AnimatedCounter
+  AnimatedCounter,
 } from "./CreativeEffects";
 import "./CreativeEffects.css";
 
@@ -26,7 +26,7 @@ function App() {
   // Toggle dark mode
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
-    document.body.classList.toggle('dark-mode');
+    document.body.classList.toggle("dark-mode");
   };
 
   // Get company parameter from URL and load profile
@@ -122,19 +122,21 @@ function App() {
         <ParticleBackground />
         <div className="container">
           <div className="hero-content">
-            <p className="hero-tagline floating">🚀 Available for Opportunities</p>
+            <p className="hero-tagline floating">
+              🚀 Available for Opportunities
+            </p>
             <h1 className="hero-title">
               <GradientText animate>Jiteshwar Nishad</GradientText>
             </h1>
             <p className="hero-subtitle">
-              <TypeWriter 
+              <TypeWriter
                 texts={[
                   "Front End Lead Developer",
-                  "Gen AI & ML Engineer", 
+                  "Gen AI & ML Engineer",
                   "React.js Expert",
                   "IIT Jodhpur M.Tech",
-                  "13+ Years Experience"
-                ]} 
+                  "13+ Years Experience",
+                ]}
                 speed={80}
                 deleteSpeed={40}
                 pauseTime={2000}
@@ -145,11 +147,15 @@ function App() {
             {/* Key Stats - Recruiter Attention Grabbers */}
             <div className="hero-stats glass">
               <div className="stat-item">
-                <span className="stat-number"><AnimatedCounter end={13} suffix="+" /></span>
+                <span className="stat-number">
+                  <AnimatedCounter end={13} suffix="+" />
+                </span>
                 <span className="stat-label">Years Experience</span>
               </div>
               <div className="stat-item">
-                <span className="stat-number"><AnimatedCounter end={4} /></span>
+                <span className="stat-number">
+                  <AnimatedCounter end={4} />
+                </span>
                 <span className="stat-label">Fortune 500 Companies</span>
               </div>
               <div className="stat-item">
@@ -174,15 +180,24 @@ function App() {
             )}
 
             <div className="hero-buttons">
-              <GlowButton href="#contact">
-                📧 Hire Me
-              </GlowButton>
-              <GlowButton href="#experience">
-                💼 View Experience
-              </GlowButton>
+              <GlowButton href="#contact">📧 Hire Me</GlowButton>
+              <GlowButton href="https://www.linkedin.com/in/jiteshwar-nishad/">💼 LinkedIn</GlowButton>
               <GlowButton href="https://bold.pro/my/jiteshwar-nishad-250426153343">
                 📄 Full Resume
               </GlowButton>
+            </div>
+            
+            {/* Social Links for Recruiters */}
+            <div className="social-links">
+              <a href="https://www.linkedin.com/in/jiteshwar-nishad/" target="_blank" rel="noopener noreferrer" className="social-link tooltip" data-tooltip="LinkedIn">
+                <span>in</span>
+              </a>
+              <a href="https://github.com/jiteshwarn" target="_blank" rel="noopener noreferrer" className="social-link tooltip" data-tooltip="GitHub">
+                <span>⌘</span>
+              </a>
+              <a href="mailto:jiteshnishad1989@gmail.com" className="social-link tooltip" data-tooltip="Email Me">
+                <span>✉</span>
+              </a>
             </div>
           </div>
         </div>
@@ -238,8 +253,8 @@ function App() {
               <div className="about-card achievement shine-effect">
                 <h3>👨‍💼 Leadership</h3>
                 <p>
-                  <strong>Lead Developer</strong> at CSG Systems – Mentoring teams
-                  & driving architecture
+                  <strong>Lead Developer</strong> at CSG Systems – Mentoring
+                  teams & driving architecture
                 </p>
               </div>
             </TiltCard>
@@ -653,9 +668,13 @@ function App() {
       <footer className="footer">
         <div className="container">
           <p>
-            ✨ Crafted with <GradientText>React.js</GradientText> & <GradientText>AI</GradientText> by Jiteshwar Nishad © {new Date().getFullYear()}
+            ✨ Crafted with <GradientText>React.js</GradientText> &{" "}
+            <GradientText>AI</GradientText> by Jiteshwar Nishad ©{" "}
+            {new Date().getFullYear()}
           </p>
-          <p className="footer-tagline">Frontend Lead Developer | Gen AI & ML Engineer | IIT Jodhpur</p>
+          <p className="footer-tagline">
+            Frontend Lead Developer | Gen AI & ML Engineer | IIT Jodhpur
+          </p>
         </div>
       </footer>
 
