@@ -2,6 +2,16 @@ import "./App.css";
 import { useState, useEffect } from "react";
 import { getCompanyProfile } from "./companyProfiles";
 import ChatBot from "./ChatBot";
+import { 
+  TypeWriter, 
+  ParticleBackground, 
+  TiltCard, 
+  DarkModeToggle,
+  GradientText,
+  GlowButton,
+  AnimatedCounter
+} from "./CreativeEffects";
+import "./CreativeEffects.css";
 
 function App() {
   const [formData, setFormData] = useState({
@@ -11,6 +21,13 @@ function App() {
   });
 
   const [companyProfile, setCompanyProfile] = useState(null);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  // Toggle dark mode
+  const toggleDarkMode = () => {
+    setIsDarkMode(!isDarkMode);
+    document.body.classList.toggle('dark-mode');
+  };
 
   // Get company parameter from URL and load profile
   useEffect(() => {
@@ -74,7 +91,9 @@ function App() {
       {/* Navigation */}
       <nav className="navbar">
         <div className="container">
-          <h1 className="logo">JN</h1>
+          <h1 className="logo">
+            <GradientText>JN</GradientText>
+          </h1>
           <ul className="nav-links">
             <li>
               <a href="#home">Home</a>
@@ -91,29 +110,46 @@ function App() {
             <li>
               <a href="#contact">Contact</a>
             </li>
+            <li>
+              <DarkModeToggle isDark={isDarkMode} onToggle={toggleDarkMode} />
+            </li>
           </ul>
         </div>
       </nav>
 
       {/* Hero Section */}
       <section id="home" className="hero">
+        <ParticleBackground />
         <div className="container">
           <div className="hero-content">
-            <p className="hero-tagline">🚀 Available for Opportunities</p>
-            <h1 className="hero-title">Jiteshwar Nishad</h1>
+            <p className="hero-tagline floating">🚀 Available for Opportunities</p>
+            <h1 className="hero-title">
+              <GradientText animate>Jiteshwar Nishad</GradientText>
+            </h1>
             <p className="hero-subtitle">
-              Front End Lead Developer | Gen AI & ML Engineer
+              <TypeWriter 
+                texts={[
+                  "Front End Lead Developer",
+                  "Gen AI & ML Engineer", 
+                  "React.js Expert",
+                  "IIT Jodhpur M.Tech",
+                  "13+ Years Experience"
+                ]} 
+                speed={80}
+                deleteSpeed={40}
+                pauseTime={2000}
+              />
             </p>
             <p className="hero-description">{companyProfile.headline}</p>
 
             {/* Key Stats - Recruiter Attention Grabbers */}
-            <div className="hero-stats">
+            <div className="hero-stats glass">
               <div className="stat-item">
-                <span className="stat-number">13+</span>
+                <span className="stat-number"><AnimatedCounter end={13} suffix="+" /></span>
                 <span className="stat-label">Years Experience</span>
               </div>
               <div className="stat-item">
-                <span className="stat-number">4</span>
+                <span className="stat-number"><AnimatedCounter end={4} /></span>
                 <span className="stat-label">Fortune 500 Companies</span>
               </div>
               <div className="stat-item">
@@ -138,20 +174,15 @@ function App() {
             )}
 
             <div className="hero-buttons">
-              <a href="#contact" className="btn btn-primary">
+              <GlowButton href="#contact">
                 📧 Hire Me
-              </a>
-              <a href="#experience" className="btn btn-secondary">
+              </GlowButton>
+              <GlowButton href="#experience">
                 💼 View Experience
-              </a>
-              <a
-                href="https://bold.pro/my/jiteshwar-nishad-250426153343"
-                className="btn btn-secondary"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              </GlowButton>
+              <GlowButton href="https://bold.pro/my/jiteshwar-nishad-250426153343">
                 📄 Full Resume
-              </a>
+              </GlowButton>
             </div>
           </div>
         </div>
@@ -175,35 +206,43 @@ function App() {
           </div>
 
           {/* Achievement Cards */}
-          <div className="about-grid">
-            <div className="about-card achievement">
-              <h3>🏢 Enterprise Impact</h3>
-              <p>
-                Led frontend development for Fortune 500 clients across{" "}
-                <strong>IoT, OTT, Healthcare & FinTech</strong>
-              </p>
-            </div>
-            <div className="about-card achievement">
-              <h3>🎓 IIT Jodhpur</h3>
-              <p>
-                Pursuing <strong>M.Tech in AI/ML</strong> – bridging frontend
-                with artificial intelligence
-              </p>
-            </div>
-            <div className="about-card achievement">
-              <h3>🤖 GenAI Certified</h3>
-              <p>
-                <strong>Generative AI Mastermind</strong> – Ready to implement
-                AI-powered features
-              </p>
-            </div>
-            <div className="about-card achievement">
-              <h3>👨‍💼 Leadership</h3>
-              <p>
-                <strong>Lead Developer</strong> at CSG Systems – Mentoring teams
-                & driving architecture
-              </p>
-            </div>
+          <div className="about-grid stagger-children">
+            <TiltCard>
+              <div className="about-card achievement shine-effect">
+                <h3>🏢 Enterprise Impact</h3>
+                <p>
+                  Led frontend development for Fortune 500 clients across{" "}
+                  <strong>IoT, OTT, Healthcare & FinTech</strong>
+                </p>
+              </div>
+            </TiltCard>
+            <TiltCard>
+              <div className="about-card achievement shine-effect">
+                <h3>🎓 IIT Jodhpur</h3>
+                <p>
+                  Pursuing <strong>M.Tech in AI/ML</strong> – bridging frontend
+                  with artificial intelligence
+                </p>
+              </div>
+            </TiltCard>
+            <TiltCard>
+              <div className="about-card achievement shine-effect">
+                <h3>🤖 GenAI Certified</h3>
+                <p>
+                  <strong>Generative AI Mastermind</strong> – Ready to implement
+                  AI-powered features
+                </p>
+              </div>
+            </TiltCard>
+            <TiltCard>
+              <div className="about-card achievement shine-effect">
+                <h3>👨‍💼 Leadership</h3>
+                <p>
+                  <strong>Lead Developer</strong> at CSG Systems – Mentoring teams
+                  & driving architecture
+                </p>
+              </div>
+            </TiltCard>
           </div>
 
           {/* Key Differentiators */}
@@ -584,10 +623,39 @@ function App() {
         </div>
       </section>
 
+      {/* Tech Stack Marquee */}
+      <div className="marquee-container">
+        <div className="marquee-content">
+          <span>⚛️ React.js</span>
+          <span>📘 TypeScript</span>
+          <span>🅰️ Angular</span>
+          <span>🔄 Redux</span>
+          <span>📦 Webpack</span>
+          <span>🎨 CSS3</span>
+          <span>🤖 Machine Learning</span>
+          <span>✨ Generative AI</span>
+          <span>🔗 Node.js</span>
+          <span>🎯 REST APIs</span>
+          <span>⚛️ React.js</span>
+          <span>📘 TypeScript</span>
+          <span>🅰️ Angular</span>
+          <span>🔄 Redux</span>
+          <span>📦 Webpack</span>
+          <span>🎨 CSS3</span>
+          <span>🤖 Machine Learning</span>
+          <span>✨ Generative AI</span>
+          <span>🔗 Node.js</span>
+          <span>🎯 REST APIs</span>
+        </div>
+      </div>
+
       {/* Footer */}
       <footer className="footer">
         <div className="container">
-          <p>Made By: Jiteshwar Nishad © {new Date().getFullYear()}</p>
+          <p>
+            ✨ Crafted with <GradientText>React.js</GradientText> & <GradientText>AI</GradientText> by Jiteshwar Nishad © {new Date().getFullYear()}
+          </p>
+          <p className="footer-tagline">Frontend Lead Developer | Gen AI & ML Engineer | IIT Jodhpur</p>
         </div>
       </footer>
 
