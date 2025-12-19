@@ -98,9 +98,32 @@ function App() {
       <section id="home" className="hero">
         <div className="container">
           <div className="hero-content">
+            <p className="hero-tagline">🚀 Available for Opportunities</p>
             <h1 className="hero-title">Jiteshwar Nishad</h1>
-            <p className="hero-subtitle">Front End Lead Developer | Gen AI ML Engineer</p>
+            <p className="hero-subtitle">
+              Front End Lead Developer | Gen AI & ML Engineer
+            </p>
             <p className="hero-description">{companyProfile.headline}</p>
+
+            {/* Key Stats - Recruiter Attention Grabbers */}
+            <div className="hero-stats">
+              <div className="stat-item">
+                <span className="stat-number">13+</span>
+                <span className="stat-label">Years Experience</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-number">4</span>
+                <span className="stat-label">Fortune 500 Companies</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-number">IIT</span>
+                <span className="stat-label">Jodhpur M.Tech</span>
+              </div>
+              <div className="stat-item">
+                <span className="stat-number">AI/ML</span>
+                <span className="stat-label">+ Frontend Expert</span>
+              </div>
+            </div>
 
             {/* Show company-specific highlights */}
             {companyProfile.highlights && (
@@ -115,10 +138,18 @@ function App() {
 
             <div className="hero-buttons">
               <a href="#contact" className="btn btn-primary">
-                Get In Touch
+                📧 Hire Me
               </a>
               <a href="#experience" className="btn btn-secondary">
-                View Work
+                💼 View Experience
+              </a>
+              <a 
+                href="https://bold.pro/my/jiteshwar-nishad-250426153343" 
+                className="btn btn-secondary"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                📄 Full Resume
               </a>
             </div>
           </div>
@@ -128,40 +159,71 @@ function App() {
       {/* About Section */}
       <section id="about" className="about">
         <div className="container">
-          <h2 className="section-title">About Me</h2>
+          <h2 className="section-title">Why Hire Me?</h2>
+          
+          {/* Value Proposition */}
+          <div className="value-proposition">
+            <h3>🎯 Unique Value: Frontend Excellence + AI/ML Innovation</h3>
+            <p>
+              One of the rare developers who combines <strong>13+ years of frontend leadership</strong> with 
+              <strong> cutting-edge AI/ML expertise from IIT Jodhpur</strong>. I don't just build interfaces – 
+              I create intelligent, data-driven user experiences.
+            </p>
+          </div>
+
+          {/* Achievement Cards */}
           <div className="about-grid">
-            <div className="about-card">
-              <h3>💼 Experience</h3>
-              <p>13+ Years</p>
+            <div className="about-card achievement">
+              <h3>🏢 Enterprise Impact</h3>
+              <p>Led frontend development for Fortune 500 clients across <strong>IoT, OTT, Healthcare & FinTech</strong></p>
             </div>
-            <div className="about-card">
-              <h3>🎓 Education</h3>
-              <p>M.Tech AI/ML<br/>IIT Jodhpur (Ongoing)</p>
+            <div className="about-card achievement">
+              <h3>🎓 IIT Jodhpur</h3>
+              <p>Pursuing <strong>M.Tech in AI/ML</strong> – bridging frontend with artificial intelligence</p>
             </div>
-            <div className="about-card">
-              <h3>💬 Languages</h3>
-              <p>
-                Hindi (Native)
-                <br />
-                English (Fluent)
-              </p>
+            <div className="about-card achievement">
+              <h3>🤖 GenAI Certified</h3>
+              <p><strong>Generative AI Mastermind</strong> – Ready to implement AI-powered features</p>
             </div>
-            <div className="about-card">
-              <h3>📍 Location</h3>
-              <p>Bangalore, Karnataka</p>
+            <div className="about-card achievement">
+              <h3>👨‍💼 Leadership</h3>
+              <p><strong>Lead Developer</strong> at CSG Systems – Mentoring teams & driving architecture</p>
             </div>
           </div>
-          <div className="about-summary">
-            <p>
-              Results-driven Front-End Developer with over 12 years of experience delivering responsive, 
-              accessible, and high-performance web applications. Demonstrated expertise in React.js, AngularJS, 
-              TypeScript, Redux, HTML5, CSS3, and modern UI/UX design principles. Proven track record of building 
-              scalable solutions across IoT, OTT, healthcare, and financial platforms.
-            </p>
-            <p>
-              Currently pursuing M.Tech in AI/ML Technologies from IIT Jodhpur, deepening expertise in artificial 
-              intelligence and machine learning to build smarter, data-driven front-end solutions.
-            </p>
+
+          {/* Key Differentiators */}
+          <div className="differentiators">
+            <h3>What Sets Me Apart:</h3>
+            <div className="diff-grid">
+              <div className="diff-item">
+                <span className="diff-icon">⚡</span>
+                <div>
+                  <strong>Performance Obsessed</strong>
+                  <p>Optimized applications for millions of users</p>
+                </div>
+              </div>
+              <div className="diff-item">
+                <span className="diff-icon">🧠</span>
+                <div>
+                  <strong>AI-Ready Frontend</strong>
+                  <p>Integrating ML models into user interfaces</p>
+                </div>
+              </div>
+              <div className="diff-item">
+                <span className="diff-icon">🛠️</span>
+                <div>
+                  <strong>Modern Tooling Expert</strong>
+                  <p>GitHub Copilot, ESLint, Storybook, Figma</p>
+                </div>
+              </div>
+              <div className="diff-item">
+                <span className="diff-icon">🌐</span>
+                <div>
+                  <strong>Full-Stack Understanding</strong>
+                  <p>Node.js, APIs, and backend integration</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -173,115 +235,197 @@ function App() {
           <div className="skills-grid">
             <div className="skills-category">
               <h3>Frontend Development</h3>
-              <div className={`skill ${isEmphasized("React.js") ? "emphasized" : ""}`}>
+              <div
+                className={`skill ${
+                  isEmphasized("React.js") ? "emphasized" : ""
+                }`}
+              >
                 <div className="skill-info">
                   <span>React.js {isEmphasized("React.js") && "⭐"}</span>
                   <span>95%</span>
                 </div>
                 <div className="skill-bar">
-                  <div className="skill-progress" style={{ width: "95%" }}></div>
+                  <div
+                    className="skill-progress"
+                    style={{ width: "95%" }}
+                  ></div>
                 </div>
               </div>
-              <div className={`skill ${isEmphasized("TypeScript") ? "emphasized" : ""}`}>
+              <div
+                className={`skill ${
+                  isEmphasized("TypeScript") ? "emphasized" : ""
+                }`}
+              >
                 <div className="skill-info">
                   <span>TypeScript {isEmphasized("TypeScript") && "⭐"}</span>
                   <span>90%</span>
                 </div>
                 <div className="skill-bar">
-                  <div className="skill-progress" style={{ width: "90%" }}></div>
+                  <div
+                    className="skill-progress"
+                    style={{ width: "90%" }}
+                  ></div>
                 </div>
               </div>
-              <div className={`skill ${isEmphasized("JavaScript") ? "emphasized" : ""}`}>
+              <div
+                className={`skill ${
+                  isEmphasized("JavaScript") ? "emphasized" : ""
+                }`}
+              >
                 <div className="skill-info">
                   <span>JavaScript {isEmphasized("JavaScript") && "⭐"}</span>
                   <span>95%</span>
                 </div>
                 <div className="skill-bar">
-                  <div className="skill-progress" style={{ width: "95%" }}></div>
+                  <div
+                    className="skill-progress"
+                    style={{ width: "95%" }}
+                  ></div>
                 </div>
               </div>
-              <div className={`skill ${isEmphasized("Angular") ? "emphasized" : ""}`}>
+              <div
+                className={`skill ${
+                  isEmphasized("Angular") ? "emphasized" : ""
+                }`}
+              >
                 <div className="skill-info">
                   <span>Angular {isEmphasized("Angular") && "⭐"}</span>
                   <span>90%</span>
                 </div>
                 <div className="skill-bar">
-                  <div className="skill-progress" style={{ width: "90%" }}></div>
+                  <div
+                    className="skill-progress"
+                    style={{ width: "90%" }}
+                  ></div>
                 </div>
               </div>
-              <div className={`skill ${isEmphasized("Redux") ? "emphasized" : ""}`}>
+              <div
+                className={`skill ${isEmphasized("Redux") ? "emphasized" : ""}`}
+              >
                 <div className="skill-info">
                   <span>Redux {isEmphasized("Redux") && "⭐"}</span>
                   <span>85%</span>
                 </div>
                 <div className="skill-bar">
-                  <div className="skill-progress" style={{ width: "85%" }}></div>
+                  <div
+                    className="skill-progress"
+                    style={{ width: "85%" }}
+                  ></div>
                 </div>
               </div>
-              <div className={`skill ${isEmphasized("HTML5/CSS3") ? "emphasized" : ""}`}>
+              <div
+                className={`skill ${
+                  isEmphasized("HTML5/CSS3") ? "emphasized" : ""
+                }`}
+              >
                 <div className="skill-info">
                   <span>HTML5/CSS3 {isEmphasized("HTML5/CSS3") && "⭐"}</span>
                   <span>95%</span>
                 </div>
                 <div className="skill-bar">
-                  <div className="skill-progress" style={{ width: "95%" }}></div>
+                  <div
+                    className="skill-progress"
+                    style={{ width: "95%" }}
+                  ></div>
                 </div>
               </div>
             </div>
             <div className="skills-category">
               <h3>Tools & Emerging Tech</h3>
-              <div className={`skill ${isEmphasized("Node.js") ? "emphasized" : ""}`}>
+              <div
+                className={`skill ${
+                  isEmphasized("Node.js") ? "emphasized" : ""
+                }`}
+              >
                 <div className="skill-info">
                   <span>Node.js {isEmphasized("Node.js") && "⭐"}</span>
                   <span>75%</span>
                 </div>
                 <div className="skill-bar">
-                  <div className="skill-progress" style={{ width: "75%" }}></div>
+                  <div
+                    className="skill-progress"
+                    style={{ width: "75%" }}
+                  ></div>
                 </div>
               </div>
-              <div className={`skill ${isEmphasized("Machine Learning") ? "emphasized" : ""}`}>
+              <div
+                className={`skill ${
+                  isEmphasized("Machine Learning") ? "emphasized" : ""
+                }`}
+              >
                 <div className="skill-info">
-                  <span>Machine Learning {isEmphasized("Machine Learning") && "⭐"}</span>
+                  <span>
+                    Machine Learning {isEmphasized("Machine Learning") && "⭐"}
+                  </span>
                   <span>70%</span>
                 </div>
                 <div className="skill-bar">
-                  <div className="skill-progress" style={{ width: "70%" }}></div>
+                  <div
+                    className="skill-progress"
+                    style={{ width: "70%" }}
+                  ></div>
                 </div>
               </div>
-              <div className={`skill ${isEmphasized("GenAI") ? "emphasized" : ""}`}>
+              <div
+                className={`skill ${isEmphasized("GenAI") ? "emphasized" : ""}`}
+              >
                 <div className="skill-info">
                   <span>Generative AI {isEmphasized("GenAI") && "⭐"}</span>
                   <span>75%</span>
                 </div>
                 <div className="skill-bar">
-                  <div className="skill-progress" style={{ width: "75%" }}></div>
+                  <div
+                    className="skill-progress"
+                    style={{ width: "75%" }}
+                  ></div>
                 </div>
               </div>
-              <div className={`skill ${isEmphasized("Webpack") ? "emphasized" : ""}`}>
+              <div
+                className={`skill ${
+                  isEmphasized("Webpack") ? "emphasized" : ""
+                }`}
+              >
                 <div className="skill-info">
                   <span>Webpack {isEmphasized("Webpack") && "⭐"}</span>
                   <span>85%</span>
                 </div>
                 <div className="skill-bar">
-                  <div className="skill-progress" style={{ width: "85%" }}></div>
+                  <div
+                    className="skill-progress"
+                    style={{ width: "85%" }}
+                  ></div>
                 </div>
               </div>
-              <div className={`skill ${isEmphasized("GitHub Copilot") ? "emphasized" : ""}`}>
+              <div
+                className={`skill ${
+                  isEmphasized("GitHub Copilot") ? "emphasized" : ""
+                }`}
+              >
                 <div className="skill-info">
-                  <span>GitHub Copilot {isEmphasized("GitHub Copilot") && "⭐"}</span>
+                  <span>
+                    GitHub Copilot {isEmphasized("GitHub Copilot") && "⭐"}
+                  </span>
                   <span>85%</span>
                 </div>
                 <div className="skill-bar">
-                  <div className="skill-progress" style={{ width: "85%" }}></div>
+                  <div
+                    className="skill-progress"
+                    style={{ width: "85%" }}
+                  ></div>
                 </div>
               </div>
-              <div className={`skill ${isEmphasized("Figma") ? "emphasized" : ""}`}>
+              <div
+                className={`skill ${isEmphasized("Figma") ? "emphasized" : ""}`}
+              >
                 <div className="skill-info">
                   <span>Figma/Storybook {isEmphasized("Figma") && "⭐"}</span>
                   <span>80%</span>
                 </div>
                 <div className="skill-bar">
-                  <div className="skill-progress" style={{ width: "80%" }}></div>
+                  <div
+                    className="skill-progress"
+                    style={{ width: "80%" }}
+                  ></div>
                 </div>
               </div>
             </div>

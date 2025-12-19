@@ -177,9 +177,15 @@ export const companyProfiles = {
       secondary: "#1e40af",
       gradient: "linear-gradient(135deg, #667eea 0%, #764ba2 100%)"
     },
-    headline: "Results-driven Front-End Lead Developer with over 13 years of experience delivering responsive, accessible, and high-performance web applications. Expert in React.js, TypeScript, Angular, and modern UI/UX principles. Currently pursuing M.Tech in AI/ML from IIT Jodhpur.",
-    highlights: null,
-    skillsEmphasis: null,
+    headline: "Seeking Front-End Lead / Gen AI ML Engineer roles where I can leverage 13+ years of enterprise development experience combined with cutting-edge AI/ML expertise from IIT Jodhpur to build intelligent, high-performance web applications.",
+    highlights: [
+      "✨ 13+ Years: React.js, TypeScript, Angular, JavaScript expertise",
+      "🎓 IIT Jodhpur: M.Tech in AI/ML (Ongoing) – Rare Frontend + AI combo",
+      "🏆 Lead Developer: Currently leading frontend at CSG Systems International",
+      "🤖 GenAI Certified: Ready to implement AI-powered user experiences",
+      "🌐 Domain Expert: IoT, OTT, Healthcare, FinTech platforms"
+    ],
+    skillsEmphasis: ["React.js", "TypeScript", "JavaScript", "Machine Learning", "GenAI"],
     projects: null
   }
 };
