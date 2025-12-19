@@ -1,7 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { getCompanyProfile } from "./companyProfiles";
-import ChatBot from "./ChatBot";
+import AIChat from "./AIChat";
 import {
   TypeWriter,
   ParticleBackground,
@@ -202,8 +202,8 @@ function App() {
               </a>
               <a
                 href="https://github.com/jiteshwarn"
-          target="_blank"
-          rel="noopener noreferrer"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="social-link tooltip"
                 data-tooltip="GitHub"
               >
@@ -696,8 +696,8 @@ function App() {
         </div>
       </footer>
 
-      {/* AI ChatBot - Showcasing Gen AI Expertise */}
-      <ChatBot />
+      {/* AI Assistant - Browser-based LLM (Gemini Nano when available) */}
+      <AIChat />
     </div>
   );
 }
