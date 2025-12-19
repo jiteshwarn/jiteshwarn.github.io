@@ -1,6 +1,7 @@
 import "./App.css";
 import { useState, useEffect } from "react";
 import { getCompanyProfile } from "./companyProfiles";
+import ChatBot from "./ChatBot";
 
 function App() {
   const [formData, setFormData] = useState({
@@ -143,8 +144,8 @@ function App() {
               <a href="#experience" className="btn btn-secondary">
                 💼 View Experience
               </a>
-              <a 
-                href="https://bold.pro/my/jiteshwar-nishad-250426153343" 
+              <a
+                href="https://bold.pro/my/jiteshwar-nishad-250426153343"
                 className="btn btn-secondary"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -160,14 +161,16 @@ function App() {
       <section id="about" className="about">
         <div className="container">
           <h2 className="section-title">Why Hire Me?</h2>
-          
+
           {/* Value Proposition */}
           <div className="value-proposition">
             <h3>🎯 Unique Value: Frontend Excellence + AI/ML Innovation</h3>
             <p>
-              One of the rare developers who combines <strong>13+ years of frontend leadership</strong> with 
-              <strong> cutting-edge AI/ML expertise from IIT Jodhpur</strong>. I don't just build interfaces – 
-              I create intelligent, data-driven user experiences.
+              One of the rare developers who combines{" "}
+              <strong>13+ years of frontend leadership</strong> with
+              <strong> cutting-edge AI/ML expertise from IIT Jodhpur</strong>. I
+              don't just build interfaces – I create intelligent, data-driven
+              user experiences.
             </p>
           </div>
 
@@ -175,19 +178,31 @@ function App() {
           <div className="about-grid">
             <div className="about-card achievement">
               <h3>🏢 Enterprise Impact</h3>
-              <p>Led frontend development for Fortune 500 clients across <strong>IoT, OTT, Healthcare & FinTech</strong></p>
+              <p>
+                Led frontend development for Fortune 500 clients across{" "}
+                <strong>IoT, OTT, Healthcare & FinTech</strong>
+              </p>
             </div>
             <div className="about-card achievement">
               <h3>🎓 IIT Jodhpur</h3>
-              <p>Pursuing <strong>M.Tech in AI/ML</strong> – bridging frontend with artificial intelligence</p>
+              <p>
+                Pursuing <strong>M.Tech in AI/ML</strong> – bridging frontend
+                with artificial intelligence
+              </p>
             </div>
             <div className="about-card achievement">
               <h3>🤖 GenAI Certified</h3>
-              <p><strong>Generative AI Mastermind</strong> – Ready to implement AI-powered features</p>
+              <p>
+                <strong>Generative AI Mastermind</strong> – Ready to implement
+                AI-powered features
+              </p>
             </div>
             <div className="about-card achievement">
               <h3>👨‍💼 Leadership</h3>
-              <p><strong>Lead Developer</strong> at CSG Systems – Mentoring teams & driving architecture</p>
+              <p>
+                <strong>Lead Developer</strong> at CSG Systems – Mentoring teams
+                & driving architecture
+              </p>
             </div>
           </div>
 
@@ -575,6 +590,9 @@ function App() {
           <p>Made By: Jiteshwar Nishad © {new Date().getFullYear()}</p>
         </div>
       </footer>
+
+      {/* AI ChatBot - Showcasing Gen AI Expertise */}
+      <ChatBot />
     </div>
   );
 }
