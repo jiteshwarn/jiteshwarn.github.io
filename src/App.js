@@ -181,21 +181,39 @@ function App() {
 
             <div className="hero-buttons">
               <GlowButton href="#contact">📧 Hire Me</GlowButton>
-              <GlowButton href="https://www.linkedin.com/in/jiteshwar-nishad/">💼 LinkedIn</GlowButton>
+              <GlowButton href="https://www.linkedin.com/in/jiteshwar-nishad-21018517b/">
+                💼 LinkedIn
+              </GlowButton>
               <GlowButton href="https://bold.pro/my/jiteshwar-nishad-250426153343">
                 📄 Full Resume
               </GlowButton>
             </div>
-            
+
             {/* Social Links for Recruiters */}
             <div className="social-links">
-              <a href="https://www.linkedin.com/in/jiteshwar-nishad/" target="_blank" rel="noopener noreferrer" className="social-link tooltip" data-tooltip="LinkedIn">
+              <a
+                href="https://www.linkedin.com/in/jiteshwar-nishad-21018517b/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link tooltip"
+                data-tooltip="LinkedIn"
+              >
                 <span>in</span>
               </a>
-              <a href="https://github.com/jiteshwarn" target="_blank" rel="noopener noreferrer" className="social-link tooltip" data-tooltip="GitHub">
+              <a
+                href="https://github.com/jiteshwarn"
+          target="_blank"
+          rel="noopener noreferrer"
+                className="social-link tooltip"
+                data-tooltip="GitHub"
+              >
                 <span>⌘</span>
               </a>
-              <a href="mailto:jiteshnishad1989@gmail.com" className="social-link tooltip" data-tooltip="Email Me">
+              <a
+                href="mailto:jiteshnishad1989@gmail.com"
+                className="social-link tooltip"
+                data-tooltip="Email Me"
+              >
                 <span>✉</span>
               </a>
             </div>
