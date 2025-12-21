@@ -1,0 +1,187 @@
+import React, { useState, useEffect, useRef } from 'react';
+import './AIChat.css';
+
+// Your live API endpoint
+const API_URL = 'https://portfolio-chatbot-api-vtye.onrender.com/chat';
+
+const AIChat = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [apiStatus, setApiStatus] = useState('ready'); // 'ready', 'connecting', 'error'
+  const messagesEndRef = useRef(null);
+
+  // Initialize with welcome message
+  useEffect(() => {
+    setMessages([{
+      role: 'assistant',
+      content: "👋 Hi! I'm Jitesh's AI assistant, powered by **Google Gemini**! Ask me about his **experience, skills, education**, or **how to contact him**!"
+    }]);
+  }, []);
+
+  // Scroll to bottom on new messages
+  useEffect(() => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  }, [messages]);
+
+  const handleSend = async () => {
+    if (!input.trim() || isLoading) return;
+    
+    const userMessage = input.trim();
+    setInput('');
+    setMessages(prev => [...prev, { role: 'user', content: userMessage }]);
+    setIsLoading(true);
+    setApiStatus('connecting');
+
+    try {
+      // Call your live API
+      const response = await fetch(API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ message: userMessage }),
+      });
+
+      if (!response.ok) {
+        throw new Error(`API error: ${response.status}`);
+      }
+
+      const data = await response.json();
+      
+      setMessages(prev => [...prev, { 
+        role: 'assistant', 
+        content: data.response 
+      }]);
+      setApiStatus('ready');
+      
+    } catch (error) {
+      console.error('API error:', error);
+      
+      // Fallback response if API fails
+      setMessages(prev => [...prev, { 
+        role: 'assistant', 
+        content: "I'm having trouble connecting right now. Please try again or email Jitesh directly at **jiteshnishad1989@gmail.com** 📧"
+      }]);
+      setApiStatus('error');
+    }
+    
+    setIsLoading(false);
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSend();
+    }
+  };
+
+  const suggestedQuestions = [
+    "What are his key skills?",
+    "Tell me about his experience",
+    "How can I hire him?",
+    "What's his AI/ML background?"
+  ];
+
+  const getStatusDisplay = () => {
+    switch(apiStatus) {
+      case 'ready': return { text: '● Gemini AI Active', color: '#10b981' };
+      case 'connecting': return { text: '● Thinking...', color: '#fbbf24' };
+      case 'error': return { text: '● Reconnecting...', color: '#ef4444' };
+      default: return { text: '● AI Assistant', color: '#60a5fa' };
+    }
+  };
+
+  const status = getStatusDisplay();
+
+  return (
+    <>
+      {/* Floating Button */}
+      <button 
+        className={`ai-chat-button ${isOpen ? 'open' : ''}`}
+        onClick={() => setIsOpen(!isOpen)}
+        aria-label="AI Chat"
+      >
+        {isOpen ? (
+          <span className="close-icon">✕</span>
+        ) : (
+          <span className="ai-icon">🤖</span>
+        )}
+        <span className="ai-badge">AI</span>
+      </button>
+
+      {/* Chat Window */}
+      {isOpen && (
+        <div className="ai-chat-window">
+          <div className="ai-chat-header">
+            <div className="header-info">
+              <span className="header-icon">🤖</span>
+              <div>
+                <h4>AI Portfolio Assistant</h4>
+                <span className="status" style={{ color: status.color }}>
+                  {status.text}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div className="ai-chat-messages">
+            {messages.map((msg, idx) => (
+              <div key={idx} className={`message ${msg.role}`}>
+                <div className="message-content" dangerouslySetInnerHTML={{ 
+                  __html: msg.content
+                    .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                    .replace(/\[(.*?)\]\((.*?)\)/g, '<a href="$2" target="_blank" rel="noopener">$1</a>')
+                    .replace(/\n/g, '<br/>')
+                }} />
+              </div>
+            ))}
+            {isLoading && (
+              <div className="message assistant">
+                <div className="typing-indicator">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+            )}
+            <div ref={messagesEndRef} />
+          </div>
+
+          {/* Suggested Questions */}
+          {messages.length <= 2 && !isLoading && (
+            <div className="suggested-questions">
+              {suggestedQuestions.map((q, idx) => (
+                <button 
+                  key={idx} 
+                  onClick={() => {
+                    setInput(q);
+                    setTimeout(handleSend, 100);
+                  }}
+                  className="suggestion-btn"
+                >
+                  {q}
+                </button>
+              ))}
+            </div>
+          )}
+
+          <div className="ai-chat-input">
+            <input
+              type="text"
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyPress={handleKeyPress}
+              placeholder="Ask about Jitesh..."
+              disabled={isLoading}
+            />
+            <button onClick={handleSend} disabled={isLoading || !input.trim()}>
+              ➤
+            </button>
+          </div>
+        </div>
+      )}
+    </>
+  );
+};
+
+export default AIChat;
