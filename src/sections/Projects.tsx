@@ -5,6 +5,23 @@ import type { Project } from "../types";
 const Projects: React.FC = () => {
   const projects: Project[] = [
     {
+      title: "AI Performance Auditor",
+      icon: "⚡",
+      description:
+        "An intelligent web performance analyzer powered by Google Gemini AI. Analyzes any website's frontend performance, detects issues, and provides AI-driven optimization recommendations with framework-specific tips.",
+      tech: ["Python", "FastAPI", "Google Gemini AI", "React", "TypeScript", "BeautifulSoup", "Aiohttp"],
+      features: [
+        "Real-time website performance analysis with AI insights",
+        "Detects bundle size, resource count, and optimization opportunities",
+        "AI-powered quick wins and framework-specific recommendations",
+        "Beautiful TypeScript React frontend with modern UI",
+        "Modular backend architecture with async operations",
+      ],
+      github: "https://github.com/jiteshwarn/perf-auditor-backend",
+      live: "https://github.com/jiteshwarn/perf-auditor",
+      highlight: true,
+    },
+    {
       title: "AI-Powered Portfolio Chatbot",
       icon: "🤖",
       description:
@@ -19,7 +36,7 @@ const Projects: React.FC = () => {
       ],
       github: "https://github.com/jiteshwarn/portfolio-chatbot-api",
       live: "https://portfolio-chatbot-api-vtye.onrender.com",
-      highlight: true,
+      highlight: false,
     },
     {
       title: "Modern Portfolio Website",
@@ -110,11 +127,12 @@ const Projects: React.FC = () => {
 
         <div className="projects-cta">
           <p>
-            💡 <strong>Technical Implementation:</strong> The AI chatbot
-            demonstrates full-stack development: React frontend communicates
-            with Python FastAPI backend via REST API, which integrates with
-            Google Gemini for intelligent responses. All deployed at zero cost
-            using GitHub Pages and Render's free tier.
+            💡 <strong>Technical Implementation:</strong> These projects demonstrate full-stack 
+            AI development: React/TypeScript frontends communicate with Python FastAPI backends 
+            via REST APIs, which integrate with Google Gemini AI for intelligent responses. 
+            The Performance Auditor uses async web scraping (aiohttp, BeautifulSoup) to analyze 
+            websites and provide AI-driven optimization insights. All code is open-source and 
+            showcases modern best practices in AI integration, error handling, and clean architecture.
           </p>
         </div>
       </div>
